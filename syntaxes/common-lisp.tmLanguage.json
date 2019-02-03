@@ -1,0 +1,159 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Common Lisp",
+	"patterns": [
+		{
+			"include": "#expression"
+		}
+	],
+	"repository": {
+		"expression": {
+			"patterns": [{"include": "#constants"}]
+		},
+
+		"constants": {
+			"patterns": [
+				{
+					"match": "\\b(t|nil)\\b",
+					"name":"constant.language.boolean.common-lisp"
+				},
+				{
+					"include": "#numerics"
+				},
+				{
+					"include": "#string"
+				},
+				{
+					"include": "#comments"
+				},
+				{
+					"include": "#list"
+				},
+				{
+					"include": "#symbols"
+				}
+			]
+		},
+		"numerics": {
+			"patterns":[
+				{
+					"match": "(-?\\d+\/\\d+)",
+					"name": "constant.numeric.ratio.common-lisp"
+				},
+				{
+					"match": "(#\\d+[rR]-?[0-9a-zA-Z]+)",
+					"name": "constant.numeric.arbitrary-radix.common-lisp"
+				},
+				{
+					"name": "constant.numeric.hexadecimal.common-lisp",
+					"match": "(-?0[xX][0-9a-fA-F]+)"
+				},
+				{
+					"match": "(-?0\\d+)",
+					"name": "constant.numeric.octal.common-lisp"
+				},
+				{
+					"match": "(-?\\d+\\.\\d+([eE][+-]?\\d+)?)",
+					"name": "constant.numeric.double.common-lisp"
+				},
+				{
+					"match": "(-?\\d+)",
+					"name": "constant.numeric.long.common-lisp"
+				},
+
+				{
+					"match": "(-?\\d+\\.\\d+([eE][+-]?\\d+)?M)",
+					"name": "constant.numeric.bigdecimal.common-lisp"
+				},
+				{
+					"begin": "#c\\(",
+					"beginCaptures": {
+						"0": {
+							"name": "constant.numeric.complex.begin.common-lisp"
+						}
+					},
+					"end": "\\)", 
+					"endCaptures": {
+						"0": {
+							"name": "constant.numeric.complex.end.common-lisp"
+						}
+					},
+					"name": "constant.numeric.complex.common-lisp"
+				}
+			]
+		}, 
+		"comments": {
+			"patterns": [
+				{
+					"begin": "(?<!\\\\);+",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.common-lisp"
+						}
+					},
+					"end": "$",
+					"name": "comment.line.semicolon.common-lisp"
+				},
+				{
+					"begin": "(?<!\\\\)#\\|",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.block.common-lisp"
+						}
+					},
+					"end": "(?<!\\\\)\\|#",
+					"name": "comment.block.common-lisp"
+				}
+			]
+		},
+		"symbols": {
+			"patterns": [
+				{
+					"name": "constant.keyword.common-lisp",
+					"match": "(?<!\\w)(:)([^\\s\\)]+)"
+				}
+			]
+		},
+		"editor-specific": {
+			"patterns": [{"include": "#keywords"}]
+		},
+
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.common-lisp",
+				"match": "\\b\\(\\S+\\b"
+			}]
+		},
+
+		"string": {
+			"name": "string.quoted.double.common-lisp",
+			"begin": "\"",
+			"end": "\"",
+			"beginCaptures": {
+				"0" : { "name" : "punctuation.definition.string.begin.common-lisp"}
+			},
+			"endCaptures" : {
+				"0" : { "name" : "punctuation.definition.string.end.common-lisp"}
+			},
+			"patterns": [
+				{
+					"name": "constant.character.escape.common-lisp",
+					"match": "\\\\."
+				}
+			]
+		},
+		"list" : {
+			"begin" : "\\(",
+			"end" : "\\)",
+			"beginCaptures" : {
+				"0" : { "name" : "punctuation.paren.open.common-lisp" }
+			},
+			"endCaptures" : {
+				"0" : { "name" : "punctuation.paren.close.common-lisp" }
+			},
+			"name" : "meta.structure.list.common-lisp",
+			"patterns" : [{"include": "#expression"}]
+		}
+	},
+	"scopeName": "source.common-lisp"
+}

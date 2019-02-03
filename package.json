@@ -1,0 +1,40 @@
+{
+    "name": "common-lisp-mode",
+    "displayName": "common-lisp-mode",
+    "description": "A Common Lisp language support for Visual Studio Code.",
+    "version": "0.0.1",
+    "icon": "assets/icon.png",
+    "author": {
+        "name": "Mateusz Malisz", 
+        "email": "maliszmat@gmail.com"
+    },
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "common-lisp",
+            "aliases": ["Common Lisp", "common-lisp"],
+            "extensions": [".lisp",".lsp",".cl", ".asd"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "common-lisp",
+            "scopeName": "source.common-lisp",
+            "path": "./syntaxes/common-lisp.tmLanguage.json"
+        }]
+    },
+    "license": "SEE LICENSE IN LICENSE",
+    "bugs": {
+		"url": "https://github.com/MatthewRock/common-lisp-mode/issues",
+		"email": "maliszmat@gmail.com"
+	},
+    "repository":{
+        "type": "git",
+        "url": "https://github.com/MatthewRock/common-lisp-mode.git"
+    },
+    "homepage": "https://github.com/MatthewRock/common-lisp-mode/blob/master/README.md"
+}
