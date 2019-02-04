@@ -1,9 +1,14 @@
 {
     "name": "common-lisp-mode",
-    "displayName": "common-lisp-mode",
+    "displayName": "Common Lisp mode",
     "description": "A Common Lisp language support for Visual Studio Code.",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "icon": "assets/icon.png",
+    "keywords": [
+        "Common Lisp",
+        "Lisp",
+        "CL"
+    ],
     "author": {
         "name": "Mateusz Malisz", 
         "email": "maliszmat@gmail.com"
@@ -12,7 +17,8 @@
         "vscode": "^1.30.0"
     },
     "categories": [
-        "Programming Languages"
+        "Programming Languages",
+        "Language Packs"
     ],
     "contributes": {
         "languages": [{
